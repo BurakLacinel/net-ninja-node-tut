@@ -25,22 +25,33 @@ const fs = require("fs");
 //   console.log("file was written");
 // });
 
-//// DIRECTORIES
-// Yeni bir klasör (folder) oluşturmak için "mkdir()" kullanırız.
-// Var olan klasörü silmek için, "rmdir()" kullanırız.
-// Var olup olmadığını "existsSync()" ile öğrenebiliriz.
-if (!fs.existsSync("./img")) {
-  fs.mkdir("./img", (err) => {
+// //// DIRECTORIES
+// // Yeni bir klasör (folder) oluşturmak için "mkdir()" kullanırız.
+// // Var olan klasörü silmek için, "rmdir()" kullanırız.
+// // Var olup olmadığını "existsSync()" ile öğrenebiliriz.
+// if (!fs.existsSync("./img")) {
+//   fs.mkdir("./img", (err) => {
+//     if (err) {
+//       console.log(err);
+//     }
+//     console.log("folder created");
+//   });
+// } else {
+//   fs.rmdir("./img", (err) => {
+//     if (err) {
+//       console.log(err);
+//     }
+//     console.log("folder deleted");
+//   });
+// }
+
+//// DELETING FILES
+// Var olan bir dosya'yı silmek için "unlink()" kullanırız.
+if (fs.existsSync("./docs/deleteme.txt")) {
+  fs.unlink("./docs/deleteme.txt", (err) => {
     if (err) {
       console.log(err);
     }
-    console.log("folder created");
-  });
-} else {
-  fs.rmdir("./img", (err) => {
-    if (err) {
-      console.log(err);
-    }
-    console.log("folder deleted");
+    console.log("file deleted");
   });
 }
