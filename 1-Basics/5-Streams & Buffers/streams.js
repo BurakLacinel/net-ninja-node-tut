@@ -23,12 +23,17 @@ const readStream = fs.createReadStream("./docs/blog3.txt", {
 });
 const writeStream = fs.createWriteStream("./docs/blog4.txt");
 
-readStream.on("data", (chunk) => {
-  console.log("---- NEW CHUNK ----");
-  console.log(chunk);
+// readStream.on("data", (chunk) => {
+//   console.log("---- NEW CHUNK ----");
+//   console.log(chunk);
 
-  // her data yığını geldiğinde, yeni satırda "NEW CHUNK" yazdıracaz.
-  writeStream.write(`\nNEW CHUNK\n`);
-  // her data yığını geldiğinde, gelen datayı "blog4.txt"ye yazdıracağız.
-  writeStream.write(chunk);
-});
+//   // her data yığını geldiğinde, yeni satırda "NEW CHUNK" yazdıracaz.
+//   writeStream.write(`\nNEW CHUNK\n`);
+//   // her data yığını geldiğinde, gelen datayı "blog4.txt"ye yazdıracağız.
+//   writeStream.write(chunk);
+// });
+
+// "readable" stream'den, "writable" stream'e veri aktarmanın bir başka yolu'da "pipe"tır. Yukarıdakilerle aynı işlemi yapar, fakat çok daha kısa halidir. (Ama "readable" stream'den, "writable" stream'e veri aktaryor olmak şarttır.)
+
+// PIPING
+readStream.pipe(writeStream);
