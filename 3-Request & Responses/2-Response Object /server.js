@@ -4,9 +4,10 @@ const server = http.createServer((req, res) => {
   console.log(req.url, req.method);
 
   // set header content type
-  res.setHeader("Content-Type", "text/plain");
+  res.setHeader("Content-Type", "text/html");
 
-  res.write("hello, ninjas");
+  res.write("<p>hello, ninjas</p>");
+  res.write("<p>hello again, ninjas</p>");
   res.end();
 });
 
@@ -15,5 +16,5 @@ server.listen(3000, "localhost", () => {
 });
 
 // Notlar:
-// "Response" oluştururken, ilk yapılacak şey "response header" oluşturmaktır.
-// "Node server" komuduyla "server.js" dosyasını çalıştırdığımızda, "localhost:3000"de response'u görürüz. DevTools'da "network" sekmesinden detaylara bakabiliriz.(Header vs.)
+// "Response" olarak, "text" yerine "html"de gönderebiliriz.
+// "html" dönderdiğimiz de, tarayıcı otomatik olarak html <head> ve <body>sini oluşturur.
